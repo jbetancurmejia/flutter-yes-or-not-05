@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:yes_no_app/domain/message.dart';
 
 class HerMessageBubble extends StatelessWidget {
-  const HerMessageBubble({super.key});
+  final Message message;
+  const HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +15,13 @@ class HerMessageBubble extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
               color: colors.secondary, borderRadius: BorderRadius.circular(20)),
-          child: const Padding(
+          child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text('Hola mundo 2', style: TextStyle(color: Colors.white)),
+            child: Text(message.text, style: TextStyle(color: Colors.white)),
           ),
         ),
         const SizedBox(height: 5),
-        _ImageBubble(),
+        _ImageBubble(message.imageUrl),
         const SizedBox(height: 10)
       ],
     );
@@ -27,16 +29,17 @@ class HerMessageBubble extends StatelessWidget {
 }
 
 class _ImageBubble extends StatelessWidget {
+  final String? imageUrl;
+  _ImageBubble(this.imageUrl);
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    print(size);
-
     return ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Image.network(
-          'https://lh6.googleusercontent.com/U2WKp4jn8iQWfzwq5vXE9kLZu_JC5LRfxl8QDYANPHfYhBQCOK9v4D7UIIbTIZNC4VURD_csWn2C0oUn_hLvgjPtQMy9AsrRbYCO0Q6cj8tPu75VvNtbQEeYTfqOZ9qtQTzUx_-9AppUkGNCnxpdmQ',
+          imageUrl.toString(),
           width: size.width * 0.7,
           height: 150,
           fit: BoxFit.cover,
@@ -45,7 +48,7 @@ class _ImageBubble extends StatelessWidget {
             return Container(
               width: size.width * 0.7,
               height: 150,
-              padding: const EdgeInsets.symmetric( horizontal: 10, vertical: 5),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: const Text('Mi amor esta enviando un mensaje'),
             );
           },
