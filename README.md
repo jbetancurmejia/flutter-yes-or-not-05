@@ -2,7 +2,8 @@
 
 Yes o not App
 
-## Getting Started
+### Getting Started
 
-[X] Se aprendió a realizar consumo Htpp con *Dio*
-[X] Se realizar mapeos y utilizar la  web de  [quicktype](https://quicktype.io/) 
+* Se aprendió a realizar consumo Htpp con *Dio*
+
+* Se realizar mapeos y utilizar la  web de  [quicktype](https://quicktype.io/) 
